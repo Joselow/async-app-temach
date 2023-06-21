@@ -10,20 +10,17 @@ const options = {
 const urlYT = 'https://www.youtube.com/watch?v='
 
 const content = document.getElementById('content')
-console.log(content);
 
 const fetchData = async(url) =>{
     
         const response = await fetch(url, options);
         const result = await response.json();
-        console.log();
         return result
 }
 
 (async() => {
     try {
     const videos = await fetchData(url)
-    console.log(videos);
     let view = ` ${videos.items.map((el) => ` 
     <div class=" w-ful md:w-1/2 lg:w-1/3 p-4 text-gray-300">
     <div class="bg-black p-4 rounded-lg ">
@@ -39,7 +36,7 @@ const fetchData = async(url) =>{
     `
     content.innerHTML = view
 } catch (error) {
-    console.error(error);
+    alert('La api falló 😢\n',error);
 }
 })()
 
